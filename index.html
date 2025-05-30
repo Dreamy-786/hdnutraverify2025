@@ -3,283 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Verification - HD NUTRACEUTICALS</title>
-  <meta name="robots" content="noindex, nofollow">
+  <title>HD NUTRACEUTICALS</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  background: #ffffff; /* changed from #f7f7f7 to pure white */
-}
-
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      margin: 0;
+      padding: 0;
     }
 
-#logo {
-  max-width: 70%;
-  height: auto;
-  display: block;
-  margin: 30px auto 10px;
-}
-
+    #logo {
+      max-width: 300px;
+      height: auto;
+      display: block;
+      margin: 30px auto 10px;
     }
 
-    h2 {
-      margin-bottom: 10px;
-      font-size: 1.5rem;
+    @media (max-width: 480px) {
+      #logo {
+        max-width: 80%;
+      }
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-top: 10px;
     }
 
     p {
-      font-weight: bold;
       max-width: 90%;
-      margin: 0 auto 20px;
-      font-size: 1rem;
+      margin: 10px auto;
+      font-size: 16px;
       line-height: 1.5;
     }
 
     input[type="text"] {
       padding: 10px;
-      width: 100%;
-      max-width: 280px;
-      margin: 10px auto;
-      border-radius: 6px;
+      font-size: 16px;
+      width: 250px;
+      max-width: 80%;
+      margin-top: 20px;
+      border-radius: 5px;
       border: 1px solid #ccc;
-      display: block;
-      font-size: 1rem;
     }
 
     button {
+      margin-top: 15px;
       padding: 10px 20px;
-      margin-top: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      background-color: #007BFF;
+      font-size: 16px;
+      background-color: #007bff;
       color: white;
       border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
-    #result {
-      margin-top: 25px;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    #productImage {
-      width: 100%;
-      max-width: 300px;
-      margin: 20px auto;
-      display: none;
-      border-radius: 12px;
-    }
-
-    @media (min-width: 600px) {
-      h2 {
-        font-size: 2rem;
-      }
-      p {
-        font-size: 1.1rem;
-      }
+    button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-
-  <img src="HD NUTRA.png" id="logo" alt="HD NUTRACEUTICALS Logo">
-  <h2>HD NUTRACEUTICALS</h2>
+  <img id="logo" src="logo.png" alt="HD NUTRACEUTICALS Logo" />
+  
+  <h1>HD NUTRACEUTICALS</h1>
   <p>
-    HD NUTRACEUTICALS is an official importer of premium Dymatize nutrition products,<br>
+    HD NUTRACEUTICALS is an official<br>
+    importer of premium Dymatize nutrition products,<br>
     trusted by athletes and fitness enthusiasts worldwide.<br>
-    Use the verification tool below to confirm the authenticity of your Dymatize product.
+    Use the verification tool below to confirm<br>
+    the authenticity of your Dymatize product.
   </p>
 
-  <input type="text" id="codeInput" placeholder="Enter product code...">
-  <button onclick="verifyCode()">Verify</button>
-
-  <img id="productImage" src="" alt="Product Image">
-  <div id="result"></div>
-
-  <script>
-    const productData = {
-      "CJ19N01030HQDG": {
-        name: "Dymatize ISO100",
-        flavor: "Gourmet Chocolate",
-        size: "20 Servings / 1.43 LB / 650 G",
-        image: "choco.jpg"
-      },
-      "CJ19N01030HQWK": {
-        name: "Dymatize ISO100",
-        flavor: "Gourmet Vanilla",
-        size: "20 Servings / 1.34 LB / 610 G",
-        image: "vanilla.png"
-      },
-      "CJ19N01030GFCQ": {
-        name: "Dymatize ISO100",
-        flavor: "Fudge Brownie",
-        size: "20 Servings / 1.45 LB / 660 G",
-        image: "fudge.jpg"
-      },
-      "CJ19N01030DNDQ": {
-        name: "Dymatize ISO100",
-        flavor: "Cookies & Cream",
-        size: "20 Servings / 1.36 LB / 620 G",
-        image: "cookies.jpg"
-      },
-      "CJ19N01030TSSA": {
-        name: "Dymatize ISO100",
-        flavor: "Strawberry",
-        size: "20 Servings / 1.34 LB / 610 G",
-        image: "strawberry.jpg"
-      },
-      "CJ19N01030DHQA": {
-        name: "Dymatize ISO100",
-        flavor: "Chocolate Peanut Butter",
-        size: "20 Servings / 1.43 LB / 650 G",
-        image: "peanut.jpg"
-      },
-      "CJ19N01030DNQA": {
-        name: "Dymatize ISO100",
-        flavor: "Cocoa Pebbles",
-        size: "20 Servings / 1.43 LB / 650 G",
-        image: "cocoa.jpg"
-      },
-      "CJ19N01030GSQA": {
-        name: "Dymatize ISO100",
-        flavor: "Fruity Pebbles",
-        size: "20 Servings / 1.34 LB / 610 G",
-        image: "fruity.jpg"
-      },
-      "CJ19N01030CBQA": {
-        name: "Dymatize ISO100",
-        flavor: "Birthday Cake Pebbles",
-        size: "20 Servings / 1.34 LB / 610 G",
-        image: "birthday.jpg"
-      },
-      "CJ19N01030EMHC": {
-        name: "Dymatize ISO100",
-        flavor: "Dunkin' Glazed Donut",
-        size: "20 Servings / 1.34 LB / 610 G",
-        image: "glazed.jpg"
-      },
-      "CJ19N01030EMNK": {
-        name: "Dymatize ISO100",
-        flavor: "Dunkin' Mocha Latte",
-        size: "20 Servings / 1.45 LB / 660 G",
-        image: "mocha.jpg"
-      },
-      "CJ19N01030EMDO": {
-        name: "Dymatize ISO100",
-        flavor: "Dunkin' Cappuccino",
-        size: "20 Servings / 1.36 LB / 620 G",
-        image: "capp.jpg"
-      },
-      "CJ19N01030DMDQ": {
-        name: "Dymatize ISO100",
-        flavor: "Cinamon Cereal",
-        size: "20 Servings / 1.34 LB / 610 G",
-        image: "cereal.jpg"
-      },
-      "CJ19N0104MHQDG": {
-        name: "Dymatize ISO100",
-        flavor: "Gourmet Chocolate",
-        size: "42 Servings / 3 Lbs/ 1.37 KG",
-        image: "choc3.jpg"
-      },
-      "CJ19N0104MHQWK": {
-        name: "Dymatize ISO100",
-        flavor: "Gourmet Vanilla",
-        size: "45 Servings / 3 Lbs/ 1.37 KG",
-        image: "vanilla3.jpg"
-      },
-      "CJ19N0104MGFCQ": {
-        name: "Dymatize ISO100",
-        flavor: "Fudge Brownie",
-        size: "42 Servings / 3 Lbs/ 1.37 KG",
-        image: "fudge3.jpg"
-      },
-      "CJ19N0104MDNQA": {
-        name: "Dymatize ISO100",
-        flavor: "Cocoa Pebbles",
-        size: "42 Servings / 3 Lbs/ 1.37 KG",
-        image: "cocoa3.jpg"
-      },
-      "CJ19N0104MGSQA": {
-        name: "Dymatize ISO100",
-        flavor: "Fruity Pebbles",
-        size: "45 Servings / 3 Lbs/ 1.37 KG",
-        image: "fruity3.jpg"
-      },
-      "CJ19N0106MHQDG": {
-        name: "Dymatize ISO100",
-        flavor: "Gourmet Chocolate",
-        size: "71 Servings / 5 Lbs/ 2.3 KG",
-        image: "choc5.jpg"
-      },
-      "CJ19N0106MHQWK": {
-        name: "Dymatize ISO100",
-        flavor: "Gourmet Vanilla",
-        size: "76 Servings / 5 Lbs/ 2.3 KG",
-        image: "vanilla5.jpg"
-      },
-      "CJ19N0106MDGQA": {
-        name: "Dymatize ISO100",
-        flavor: "Chocolate Peanut Butter",
-        size: "71 Servings / 5 Lbs/ 2.3 KG",
-        image: "peanut5.jpg"
-      },
-      "CJ19N0106MGFCQ": {
-        name: "Dymatize ISO100",
-        flavor: "Fudge Brownie",
-        size: "70 Servings / 5 Lbs/ 2.3 KG",
-        image: "fudge5.jpg"
-      },
-      "CJ19N0106MDNDQ": {
-        name: "Dymatize ISO100",
-        flavor: "Cookies & Cream",
-        size: "74 Servings / 5 Lbs/ 2.3 KG",
-        image: "cookies5.jpg"
-      },
-      "CJ19N0106MTSSA": {
-        name: "Dymatize ISO100",
-        flavor: "Strawberry",
-        size: "76 Servings / 5 Lbs/ 2.3 KG",
-        image: "strawberry5.jpg"
-      }
-    };
-
-    function verifyCode() {
-      const input = document.getElementById("codeInput").value.trim().toUpperCase();
-      const resultDiv = document.getElementById("result");
-      const productImage = document.getElementById("productImage");
-
-      if (!input) {
-        resultDiv.textContent = "Please enter a code.";
-        resultDiv.style.color = "red";
-        productImage.style.display = "none";
-        return;
-      }
-
-      if (productData[input]) {
-        const product = productData[input];
-        productImage.src = product.image;
-        productImage.style.display = "block";
-        resultDiv.innerHTML = `✅ Product is <strong style="color:green;">AUTHENTIC</strong><br><br>
-          <strong>Name:</strong> ${product.name}<br>
-          <strong>Flavor:</strong> ${product.flavor}<br>
-          <strong>Size:</strong> ${product.size}`;
-        resultDiv.style.color = "green";
-      } else {
-        resultDiv.textContent = "❌ Fake product.";
-        resultDiv.style.color = "red";
-        productImage.style.display = "none";
-      }
-    }
-  </script>
-
+  <input type="text" placeholder="Enter product code..." />
+  <br />
+  <button>Verify</button>
 </body>
 </html>
